@@ -1,0 +1,37 @@
+.mejs__container {
+    width: auto;
+    background: transparent;
+    background-image: initial;
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: transparent;
+}
+
+.mejs__controls {
+    position: absolute;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    bottom: 0;
+    left: 0;
+}
+
+
+.mejs__poster {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: contain;
+    background-position: 50% 50%;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    background-repeat: no-repeat;
+    background-repeat-x: no-repeat;
+    background-repeat-y: no-repeat;
+}
