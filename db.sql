@@ -77,10 +77,58 @@ ALTER SEQUENCE authors_id_seq OWNED BY authors.id;
 
 
 --
+-- Name: blob; Type: TABLE; Schema: public; Owner: riccardosibani
+--
+
+CREATE TABLE blob (
+    id integer NOT NULL,
+    number integer,
+    title text NOT NULL,
+    description text NOT NULL,
+    date timestamp without time zone,
+    content_length bigint,
+    blog text,
+    video_src text,
+    audio_src text,
+    background_image text
+);
+
+
+ALTER TABLE blob OWNER TO riccardosibani;
+
+--
+-- Name: blob_id_seq; Type: SEQUENCE; Schema: public; Owner: riccardosibani
+--
+
+CREATE SEQUENCE blob_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE blob_id_seq OWNER TO riccardosibani;
+
+--
+-- Name: blob_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: riccardosibani
+--
+
+ALTER SEQUENCE blob_id_seq OWNED BY blob.id;
+
+
+--
 -- Name: authors id; Type: DEFAULT; Schema: public; Owner: riccardosibani
 --
 
 ALTER TABLE ONLY authors ALTER COLUMN id SET DEFAULT nextval('authors_id_seq'::regclass);
+
+
+--
+-- Name: blob id; Type: DEFAULT; Schema: public; Owner: riccardosibani
+--
+
+ALTER TABLE ONLY blob ALTER COLUMN id SET DEFAULT nextval('blob_id_seq'::regclass);
 
 
 --
@@ -102,11 +150,43 @@ SELECT pg_catalog.setval('authors_id_seq', 3, true);
 
 
 --
+-- Data for Name: blob; Type: TABLE DATA; Schema: public; Owner: riccardosibani
+--
+
+COPY blob (id, number, title, description, date, content_length, blog, video_src, audio_src, background_image) FROM stdin;
+1	1	Una giornata al mare	C'era bel tempo	2019-02-19 19:24:39.645956	3480	<h1>Fillo Gay</h1>	\N	assets/audio/Episode1.mp3	assets/img/backgrounds/Background1.jpeg
+\.
+
+
+--
+-- Name: blob_id_seq; Type: SEQUENCE SET; Schema: public; Owner: riccardosibani
+--
+
+SELECT pg_catalog.setval('blob_id_seq', 1, true);
+
+
+--
 -- Name: authors authors_pkey; Type: CONSTRAINT; Schema: public; Owner: riccardosibani
 --
 
 ALTER TABLE ONLY authors
     ADD CONSTRAINT authors_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: blob blob_number_key; Type: CONSTRAINT; Schema: public; Owner: riccardosibani
+--
+
+ALTER TABLE ONLY blob
+    ADD CONSTRAINT blob_number_key UNIQUE (number);
+
+
+--
+-- Name: blob blob_pkey; Type: CONSTRAINT; Schema: public; Owner: riccardosibani
+--
+
+ALTER TABLE ONLY blob
+    ADD CONSTRAINT blob_pkey PRIMARY KEY (id);
 
 
 --
